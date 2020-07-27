@@ -2,6 +2,7 @@
 
 plugins {
     id 'org.springframework.boot' version '2.3.1.RELEASE'
+   
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
 }
@@ -27,6 +28,7 @@ ext {
     set('springCloudVersion', "Hoxton.SR5")
     set('wavefrontVersion', "2.0.0-RC1")
     dekorateVersion = System.getProperty("dekorateVersion", "0.11.9")
+    set('tracingVersion', "0.5.3")
     user = "$System.env.USER"
 }
 
@@ -45,7 +47,7 @@ dependencies {
 
     implementation 'com.wavefront:wavefront-spring-boot-starter'
     // implementation 'org.springframework.cloud:spring-cloud-starter-sleuth'
-    implementation 'io.opentracing.contrib:opentracing-spring-cloud-starter:0.5.3'
+    implementation("io.opentracing.contrib:opentracing-spring-cloud-starter:${tracingVersion}")
 
     implementation("io.dekorate:dekorate-spring-boot:${dekorateVersion}")
     implementation("io.dekorate:kubernetes-annotations:${dekorateVersion}")
